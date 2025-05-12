@@ -5,4 +5,6 @@ export const useUserStore = defineStore("userState", () => {
   // State Variables
   const email = ref(null);
   const userID = ref(null);
+
+  return { email, userID };
 });
