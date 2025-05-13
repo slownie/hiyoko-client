@@ -41,7 +41,7 @@ async function fetchData() {
   <h1>Grammar List View</h1>
   <ul>
     <li v-for="point in grammarPoints" :key="point.id">
-      <RouterLink :to="'grammarlist/' + point.id">
+      <RouterLink :to="'grammarlist/' + point.name" >
         {{ point.name }}
       </RouterLink>
     </li>

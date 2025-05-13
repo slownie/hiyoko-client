@@ -4,14 +4,32 @@ import grammarData from "@/data/grammarPoints.json";
 
 const grammarPoints = grammarData;
 
-const props = defineProps({ id: String });
+const props = defineProps({ id: String, name: String });
 
 const grammarPoint = computed(() => {
-  return grammarPoints.find((point) => point.title === props.id);
+  return grammarPoints.find((point) => point.name === props.id);
 });
 </script>
 
 <template>
-  <h1>Grammar Point View</h1>
-  {{ id }}
+  {{ name }}
+  <h1>{{ grammarPoint.name }}</h1>
+  <h2>説明</h2>
+  <p>
+    {{ grammarPoint.explanation }}
+  </p>
+  <h2>接続</h2>
+  <p>
+    {{ grammarPoint.conjugation }}
+  </p>
+  <h2>例文</h2>
+  <p
+    v-for="sentence in grammarPoint.sentences"
+    :key="sentence"
+  >
+    {{ sentence.jp }}
+    <br/>
+    {{ sentence.eg }}
+  </p>
+  
 </template>

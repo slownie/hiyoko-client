@@ -37,7 +37,7 @@ const router = createRouter({
       path: "/grammarlist/:id",
       name: "grammarPoint",
       component: GrammarPointView,
-      props: true,
+      props: true
     },
 
     {
