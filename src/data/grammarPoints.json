@@ -1,35 +1,6 @@
 [
   {
     "id": "0",
-    "name": "Test",
-    "explanation": "Test Explanation",
-    "conjugation": "Test Conjugation",
-    "sentences": [
-      {
-        "jpHTML": "Test JPHTML",
-        "jp": "Test JP",
-        "eg": "Test EG"
-      },
-      {
-        "jpHTML": "Test JPHTML",
-        "jp": "",
-        "eg": ""
-      },
-      {
-        "jpHTML": "Test JPHTML",
-        "jp": "",
-        "eg": ""
-      },
-      {
-        "jpHTML": "Test JPHTML",
-        "jp": "",
-        "eg": ""
-      }
-    ]
-  },
-
-  {
-    "id": "1",
     "name": "次第",
     "explanation": "A sentence pattern that indicates that after a certain action or situation is completed, the next action or event immediately follows. It is often used with the speaker’s intention or plan and is commonly used in formal settings.",
     "conjugation": "動詞（連用形）＋しだい",
@@ -54,35 +25,36 @@
         "jp": "定員になり次第、受付を終了いたします。",
         "eg": "We will stop accepting applications as soon as the capacity is reached."
       }
-    ]
+    ],
+    "tags": []
   },
 
   {
-    "id": "2",
+    "id": "1",
     "name": "次第で・次第だ",
     "explanation": "A sentence pattern that shows a certain event or situation depends on other elements or conditions.",
-    "conjugation": "名詞＋次第で\n名詞＋次第だ",
+    "conjugation": "名詞＋次第で<br/>名詞＋次第だ",
     "sentences": [
-        {
+      {
         "jpHTML": "Test JPHTML",
         "jp": "Test JP",
         "eg": "Test EG"
-        },
-        {
+      },
+      {
         "jpHTML": "Test JPHTML",
         "jp": "",
         "eg": ""
-        },
-        {
+      },
+      {
         "jpHTML": "Test JPHTML",
         "jp": "",
         "eg": ""
-        },
-        {
+      },
+      {
         "jpHTML": "Test JPHTML",
         "jp": "",
         "eg": ""
-        }
-    ] 
+      }
+    ]
   }
 ]

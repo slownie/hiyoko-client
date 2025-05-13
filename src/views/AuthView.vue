@@ -1,9 +1,20 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useUserStore } from "@/stores/UserStore";
 
+const userStore = useUserStore();
 const signupOrLogin = ref(true); // True=Signup False=Login
 const email = ref("");
 const password = ref("");
+
+async function auth() {
+  //Signup
+  if (signupOrLogin) {
+    await userStore.signup(email.value, password.value);
+  } else {
+    await userStore.login(email.value, password.value);
+  }
+}
 
 function swap() {
   signupOrLogin.value = !signupOrLogin.value;
@@ -31,6 +42,10 @@ function swap() {
         placeholder="Password123."
         required
       />
+
+      <p>
+        {{ userStore.error }}
+      </p>
 
       <button class="submit-button">
         {{ signupOrLogin ? "Sign Up" : "Login" }}

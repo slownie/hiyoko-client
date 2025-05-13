@@ -15,21 +15,13 @@ const grammarPoint = computed(() => {
   {{ name }}
   <h1>{{ grammarPoint.name }}</h1>
   <h2>説明</h2>
-  <p>
-    {{ grammarPoint.explanation }}
-  </p>
+  <p v-html="grammarPoint.explanation"></p>
   <h2>接続</h2>
-  <p>
-    {{ grammarPoint.conjugation }}
-  </p>
+  <p v-html="grammarPoint.conjugation"></p>
   <h2>例文</h2>
-  <p
-    v-for="sentence in grammarPoint.sentences"
-    :key="sentence"
-  >
+  <p v-for="sentence in grammarPoint.sentences" :key="sentence">
     {{ sentence.jp }}
-    <br/>
+    <br />
     {{ sentence.eg }}
   </p>
-  
 </template>
