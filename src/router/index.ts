@@ -7,8 +7,7 @@ import AuthView from "@/views/AuthView.vue";
 import NotFoundView from "@/views/NotFoundView.vue";
 import ArticleView from "@/views/reading/ArticleView.vue";
 import GrammarPointView from "@/views/grammar/GrammarPointView.vue";
-
-import { useGrammarStore } from "@/stores/GrammarStore";
+import PracticeTestView from "@/views/test/PracticeTestView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,7 +36,7 @@ const router = createRouter({
       path: "/grammarlist/:id",
       name: "grammarPoint",
       component: GrammarPointView,
-      props: true
+      props: true,
     },
 
     {
@@ -50,6 +49,7 @@ const router = createRouter({
       path: "/readinglist/:id",
       name: "article",
       component: ArticleView,
+      props: true,
     },
 
     {
@@ -57,6 +57,14 @@ const router = createRouter({
       name: "testList",
       component: TestListView,
     },
+
+    {
+      path: "/testlist/:id",
+      name: "practicetest",
+      component: PracticeTestView,
+      props: true,
+    },
+
     {
       path: "/auth",
       name: "auth",

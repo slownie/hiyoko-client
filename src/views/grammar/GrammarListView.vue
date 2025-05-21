@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useGrammarStore } from "@/stores/GrammarStore";
 import { computed, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 
@@ -37,9 +36,9 @@ async function fetchData() {
 }
   */
 const filteredPoints = computed(() => {
-  return grammarData.filter((point) =>
-    point.name.toLowerCase().includes(query.value.toLowerCase())
-  );
+  return grammarData.filter((point) => {
+    point.tags.includes(query.value.toLowerCase());
+  });
 });
 </script>
 
@@ -52,7 +51,15 @@ const filteredPoints = computed(() => {
     @keyup=""
   />
 
-  <ul>
+  <!--Show all grammar points unless user searches for a specific one-->
+  <ul v-if="query === ''">
+    <li v-for="point in grammarData" :key="point.id">
+      <RouterLink :to="'grammarlist/' + point.name">
+        {{ point.name }}
+      </RouterLink>
+    </li>
+  </ul>
+  <ul v-else>
     <li v-for="point in filteredPoints" :key="point.id">
       <RouterLink :to="'grammarlist/' + point.name">
         {{ point.name }}

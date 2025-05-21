@@ -9,7 +9,7 @@ const password = ref("");
 
 async function auth() {
   //Signup
-  if (signupOrLogin) {
+  if (signupOrLogin.value) {
     await userStore.signup(email.value, password.value);
   } else {
     await userStore.login(email.value, password.value);

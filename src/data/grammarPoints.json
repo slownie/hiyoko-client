@@ -26,7 +26,7 @@
         "eg": "We will stop accepting applications as soon as the capacity is reached."
       }
     ],
-    "tags": []
+    "tags": ["shidai", "しだい", "次第"]
   },
 
   {
@@ -55,6 +55,16 @@
         "jp": "",
         "eg": ""
       }
+    ],
+    "tags": [
+      "shidaide",
+      "shidaida",
+      "shidai de",
+      "shidai da",
+      "しだいで",
+      "しだいだ",
+      "次第で",
+      "次第だ"
     ]
   }
 ]

@@ -1,0 +1,49 @@
+Home View
+- Lessons pages
+    - Introduction
+    - 
+- Progress tracker
+
+Grammar List
+- Search functionality
+    - romaji
+    - hiragana
+- Filter functionality  
+    - JLPT level
+    - grammar function
+- Add the remaining grammar points
+
+Reading List
+- Create articles that utilize the different grammar points
+
+Test List
+- Create tests for the different categories
+
+- Quiz functionality
+Kanji to Hiragana
+Hiragana to Kanji
+Fill in the Blank (Most Appropriate)
+Closest 
+
+Vocabulary Categories
+- Kanji Reading
+- Hiragana to Kanji
+- Best Fit (Suffix)
+- Best Fit (Word)
+- Similar Meaning
+- How Word Is Used
+- Best Fit (Grammar)
+- Best Fit (Sentence/Clause)
+- Best Fit (Article/Reading)
+
+[
+    0 = Question Description
+    1 - n = Question Object
+        - Sentence: String
+        - Options: [String]
+        - Right Answer: String
+
+]
+
+
+- Make responsive styles for each of the pages

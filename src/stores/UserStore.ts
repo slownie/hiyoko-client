@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
+import router from "@/router";
 
 export const useUserStore = defineStore("userState", () => {
   // State Variables
@@ -24,18 +25,73 @@ export const useUserStore = defineStore("userState", () => {
   async function signup(email: String, password: String) {
     error.value = null;
     loading.value = true;
-    const res = await fetch("http://localhost:4000/api/grammar/", {
-      method: "GET",
+    const res = await fetch("http://localhost:4000/api/users/signup", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
+      body: JSON.stringify({ email: email, password: password }),
     });
     const json = await res.json();
     if (!res.ok) {
       error.value = json.error;
       loading.value = false;
     }
+
+    if (res.ok) {
+      userID.value = json.userID;
+
+      loading.value = false;
+      const saveData = {
+        email: json.email,
+        token: json.token,
+        userID: json.userID,
+        learnedSentences: json.learnedSentences,
+        srsDone: json.srsDone,
+      };
+      localStorage.setItem("user", JSON.stringify(saveData));
+      //router.go("/");
+    }
+  }
+
+  async function login(email: String, password: String) {
+    error.value = null;
+    loading.value = true;
+    const res = await fetch("http://localhost:4000/api/users/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email, password: password }),
+    });
+    const json = await res.json();
+
+    if (!res.ok) {
+      error.value = json.error;
+      loading.value = false;
+    }
+
+    if (res.ok) {
+      userID.value = json.userID;
+
+      loading.value = false;
+      const saveData = {
+        email: json.email,
+        token: json.token,
+        userID: json.userID,
+        learnedSentences: json.learnedSentences,
+        srsDone: json.srsDone,
+      };
+      localStorage.setItem("user", JSON.stringify(saveData));
+    }
+  }
+
+  async function logout() {
+    userID.value = null;
+    progress.value = [];
+    readingListProgress.value = [];
+    testHistory.value = [];
+    localStorage.removeItem("user");
+    router.go("/");
   }
 
   return {
@@ -46,5 +102,7 @@ export const useUserStore = defineStore("userState", () => {
     error,
     loading,
     signup,
+    login,
+    logout,
   };
 });

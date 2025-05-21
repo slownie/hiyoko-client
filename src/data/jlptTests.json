@@ -1,0 +1,33 @@
+[
+  {
+    "vocabulary": {
+      "kanji_reading": {
+        "sentence": "問題1：＿の言葉の読み方として最もよいものを、１・２・３・４から一つ選びなさい。",
+        "questions": [
+          {
+            "sentence": "昨日から<u>腕</u>が痛くて困っている。",
+            "answers": ["こし", "うで", "かた", "ひざ"],
+            "rightAnswer": "うで",
+            "explanation": ""
+          }
+        ]
+      },
+
+      "hiragana_to_kanji": {
+        "sentence": "問題2：＿の言葉の読み方として最もよいものを、１・２・３・４から一つ選びなさい。 ",
+        "questions": [
+          {
+            "sentence": "お金の<u>かんり</u>は、きちんとしてください。",
+            "answers": ["管利", "官理", "管理", "官利"],
+            "rightAnswer": "管理",
+            "explanation": ""
+          }
+        ]
+      }
+    },
+    "grammar": {},
+    "reading": {}
+  },
+
+  {}
+]
