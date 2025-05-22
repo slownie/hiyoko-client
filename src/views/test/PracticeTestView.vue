@@ -12,15 +12,23 @@ function shuffle(array: any[]) {
 const questions: any[] = [];
 
 // Check if this is a general test or a category test
-if (propArray[1] == "jlpt") {
+if (propArray[1] === "jlpt") {
+  //console.log(testData[5 - propArray[0].charAt(1)]);
   //testData[5 - propArray[0].charAt(1)];
+  for (const category in testData[5 - propArray[0].charAt(1)]) {
+    // Randomize the order of questions and select the first two
+    for (const [key,value] of Object.entries(testData[5-propArray[0].charAt(1)][category])) {
+      shuffle(value);
+      questions.push(value[0],value[1]);
+    }
+  }
 } else {
-  for (const [key, value] of Object.entries(
+  for (const [key,value] of Object.entries(
     testData[5 - propArray[0].charAt(1)][propArray[1]]
   )) {
     // Randomize the order of questions and select the first two
     shuffle(value);
-    questions.push(value[0], value[1]);
+    questions.push(value[0],value[1]);
   }
 }
 
@@ -30,8 +38,8 @@ const score = ref(0);
 const currentQuestion = ref(0);
 
 const getCurrentQuestion = computed(() => {
-  let question = questions[currentQuestion.value];
-  return question;
+   let question = questions[currentQuestion.value];
+   return question;
 });
 </script>
 
