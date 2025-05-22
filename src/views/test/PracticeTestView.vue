@@ -1,65 +1,49 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-
-// Import Setup
-import testData from "@/data/jlptTests.json";
+import testData from "@/data/questionData.json";
 const props = defineProps({ id: String });
 const propArray = props.id?.split("-");
 
-// Setup Questions Array
-let questions;
+function shuffle(array: any[]) {
+  array.sort(() => Math.random() - 0.5);
+}
+
+// Question Setup
+const questions: any[] = [];
+
+// Check if this is a general test or a category test
 if (propArray[1] == "jlpt") {
-  questions = testData[5 - parseInt(propArray[0].charAt(1))];
+  //testData[5 - propArray[0].charAt(1)];
 } else {
-  questions = testData[5 - parseInt(propArray[0].charAt(1))][propArray[1]];
+  for (const [key, value] of Object.entries(
+    testData[5 - propArray[0].charAt(1)][propArray[1]]
+  )) {
+    // Randomize the order of questions and select the first two
+    shuffle(value);
+    questions.push(value[0], value[1]);
+  }
 }
-
-for (const [key, value] of Object.entries(questions)) {
-  console.log(key);
-}
-
-
 
 // Test Setup
 const quizCompleted = ref(false);
+const score = ref(0);
 const currentQuestion = ref(0);
 
-const currentAnswer = ref("");
-
-const score = ref(0);
-
-// Get the current question via index
 const getCurrentQuestion = computed(() => {
-  let question = questions.questions[0];
-  return question
+  let question = questions[currentQuestion.value];
+  return question;
 });
-
-// Increment to the next question
-const getNextQuestion = () => {
-  if (currentQuestion.value < questions.length - 1) {
-    currentQuestion.value++;
-    return;
-  }
-  quizCompleted.value = true;
-}
 </script>
 
 <template>
   <main>
     <h1>Practice Test View</h1>
     {{ props.id }}
-    <p>Score: {{ score }} / </p>
+    <p>Score: {{ score }} /</p>
     <section class="quiz" v-if="!quizCompleted">
       <!--Question Sentence-->
+      <h3>{{ getCurrentQuestion.questionString }}</h3>
       <p v-html="getCurrentQuestion.sentence"></p>
-
-      <!--Options-->
-      <div class="options" v-for="option in getCurrentQuestion?.answers">
-        <input type="radio" v-model="currentAnswer" :value="option" :id="option">
-        <label :for="option">{{ option }}</label>
-      </div>
-      
-      <button :disabled="currentAnswer===''">Submit</button>
     </section>
     <section v-else>
       <h2>You have finished the test!</h2>
