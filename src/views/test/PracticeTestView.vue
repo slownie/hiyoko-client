@@ -2,7 +2,7 @@
 import { ref, computed } from "vue";
 import testData from "@/data/questionData.json";
 const props = defineProps({ id: String });
-const propArray = props.id?.split("-");
+const propArray : string[] = props.id?.split("-")!;
 
 function shuffle(array: any[]) {
   array.sort(() => Math.random() - 0.5);
@@ -15,9 +15,9 @@ const questions: any[] = [];
 if (propArray[1] === "jlpt") {
   //console.log(testData[5 - propArray[0].charAt(1)]);
   //testData[5 - propArray[0].charAt(1)];
-  for (const category in testData[5 - propArray[0].charAt(1)]) {
+  for (const category in testData[5 - Number(propArray[0].charAt(1))]) {
     // Randomize the order of questions and select the first two
-    for (const [key,value] of Object.entries(testData[5-propArray[0].charAt(1)][category])) {
+    for (const [key, value] of Object.entries(testData[5-propArray[0].charAt(1)][category])) {
       shuffle(value);
       questions.push(value[0],value[1]);
     }
@@ -36,22 +36,61 @@ if (propArray[1] === "jlpt") {
 const quizCompleted = ref(false);
 const score = ref(0);
 const currentQuestion = ref(0);
+const selectedAnswer = ref("");
+const submittedQuestion = ref(false);
 
+// Get the current question via index
 const getCurrentQuestion = computed(() => {
    let question = questions[currentQuestion.value];
    return question;
 });
+
+// Check the results of the score
+const checkCurrentQuestion = () => {
+  submittedQuestion.value = true; // Prevent user from changing answer
+  if (selectedAnswer.value === getCurrentQuestion.value.rightAnswer) {
+    score.value++;
+  }
+}
+
+// Increment to the next question
+const getNextQuestion = () => {
+  // Reset question/answer values
+  selectedAnswer.value = "";
+  submittedQuestion.value = false;
+
+  if (currentQuestion.value < questions.length - 1) {
+    currentQuestion.value++;
+    return;
+  }
+  quizCompleted.value = true;
+}
+
 </script>
 
 <template>
   <main>
     <h1>Practice Test View</h1>
-    {{ props.id }}
-    <p>Score: {{ score }} /</p>
+    <p>Score: {{ score }} / {{ questions.length }}</p>
     <section class="quiz" v-if="!quizCompleted">
       <!--Question Sentence-->
       <h3>{{ getCurrentQuestion.questionString }}</h3>
       <p v-html="getCurrentQuestion.sentence"></p>
+      <div v-for="answer in getCurrentQuestion.answers" :key="answer">
+        <input type="radio" v-model="selectedAnswer" :id="answer" :name="answer" :value="answer" :disabled="submittedQuestion"/>
+        <label :for="answer">{{ answer }}</label>
+      </div>
+
+      <!--Buttons-->
+
+      <!--Show submit button if user has not submitted yet-->
+      <div v-if="!submittedQuestion">
+        <button :disabled="selectedAnswer === ''" @click="checkCurrentQuestion">Submit</button>
+      </div>
+      <div v-else>
+        <button :disabled="selectedAnswer === '' && !submittedQuestion" @click="getNextQuestion">Next Question</button>
+      </div>
+      
     </section>
     <section v-else>
       <h2>You have finished the test!</h2>
