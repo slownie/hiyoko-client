@@ -17,9 +17,8 @@ Reading List
 - Create articles that utilize the different grammar points
 
 Test List
-- Create tests for the different categories
 
-- Quiz functionality
+
 Kanji to Hiragana
 Hiragana to Kanji
 Fill in the Blank (Most Appropriate)

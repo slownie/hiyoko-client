@@ -5,6 +5,7 @@ import router from "@/router";
 export const useUserStore = defineStore("userState", () => {
   // State Variables
   const userID = ref(null);
+  const token = ref(null);
   const progress = ref([]);
   const readingListProgress = ref([]);
   const testHistory = ref([]);
@@ -40,15 +41,20 @@ export const useUserStore = defineStore("userState", () => {
     }
 
     if (res.ok) {
+      console.log(json);
       userID.value = json.userID;
+      token.value = json.token;
+      progress.value = json.grammarProgress;
+      readingListProgress.value = json.readingProgress;
+      testHistory.value = json.testResults;
 
       loading.value = false;
       const saveData = {
-        email: json.email,
-        token: json.token,
         userID: json.userID,
-        learnedSentences: json.learnedSentences,
-        srsDone: json.srsDone,
+        token: json.token,
+        progress: json.grammarProgress,
+        readingListProgress: json.readingProgress,
+        testHistory: json.testResults,
       };
       localStorage.setItem("user", JSON.stringify(saveData));
       //router.go("/");
@@ -78,7 +84,6 @@ export const useUserStore = defineStore("userState", () => {
         email: json.email,
         token: json.token,
         userID: json.userID,
-        learnedSentences: json.learnedSentences,
         srsDone: json.srsDone,
       };
       localStorage.setItem("user", JSON.stringify(saveData));
@@ -94,6 +99,40 @@ export const useUserStore = defineStore("userState", () => {
     router.go("/");
   }
 
+  // Data Actions
+  async function addTestResult(testResultObject: Object) {
+    const sendUserID = userID.value;
+    error.value = null;
+    loading.value = true;
+    const res = await fetch("http://localhost:4000/api/users/addTestResult", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        userID: sendUserID,
+        testResultObject: testResultObject,
+      }),
+    });
+    const json = await res.json();
+    if (!res.ok) {
+      error.value = json.error;
+      loading.value = false;
+    }
+
+    if (res.ok) {
+      error.value = null;
+      loading.value = false;
+      testHistory.value.push(testResultObject);
+
+      const saveData = JSON.parse(localStorage.getItem("user"));
+
+      // This condition shouldn't run but someone can delete their save data if they're annoying
+      if (saveData === undefined) {
+      }
+      saveData.testHistory.push(testResultObject);
+      localStorage.setItem("user", JSON.stringify(saveData));
+    }
+  }
+
   return {
     userID,
     progress,
@@ -104,5 +143,6 @@ export const useUserStore = defineStore("userState", () => {
     signup,
     login,
     logout,
+    addTestResult,
   };
 });
