@@ -41,7 +41,6 @@ export const useUserStore = defineStore("userState", () => {
     }
 
     if (res.ok) {
-      console.log(json);
       userID.value = json.userID;
       token.value = json.token;
       progress.value = json.grammarProgress;
@@ -57,7 +56,7 @@ export const useUserStore = defineStore("userState", () => {
         testHistory: json.testResults,
       };
       localStorage.setItem("user", JSON.stringify(saveData));
-      //router.go("/");
+      router.go("/");
     }
   }
 
@@ -78,20 +77,27 @@ export const useUserStore = defineStore("userState", () => {
 
     if (res.ok) {
       userID.value = json.userID;
+      token.value = json.token;
+      progress.value = json.grammarProgress;
+      readingListProgress.value = json.readingProgress;
+      testHistory.value = json.testResults;
 
       loading.value = false;
       const saveData = {
-        email: json.email,
-        token: json.token,
         userID: json.userID,
-        srsDone: json.srsDone,
+        token: json.token,
+        progress: json.grammarProgress,
+        readingListProgress: json.readingProgress,
+        testHistory: json.testResults,
       };
       localStorage.setItem("user", JSON.stringify(saveData));
+      router.go("/");
     }
   }
 
   async function logout() {
     userID.value = null;
+    token.value = null;
     progress.value = [];
     readingListProgress.value = [];
     testHistory.value = [];
