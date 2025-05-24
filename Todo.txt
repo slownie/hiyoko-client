@@ -17,7 +17,8 @@ Reading List
 - Create articles that utilize the different grammar points
 
 Test List
-
+- Add more questions to the test bank
+- Allow users to view their past test results
 
 Kanji to Hiragana
 Hiragana to Kanji

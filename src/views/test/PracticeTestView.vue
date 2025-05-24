@@ -14,6 +14,7 @@ async function addTestResult() {
     questions: questions,
     category: propArray[1],
     score: score.value,
+    time: Date.now(),
   });
 }
 
