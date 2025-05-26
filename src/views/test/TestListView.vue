@@ -84,10 +84,13 @@ const userStore = useUserStore();
   <div v-if="userStore.userID !== null">
     <hr />
     <h1>Test History</h1>
-    <ul v-for="pastTest in userStore.testHistory" :key="pastTest.time">
+    <ul v-for="(pastTest, index) in userStore.testHistory" :key="pastTest.time">
       <li>
-        {{ pastTest.category }} - ({{ pastTest.score }} /
-        {{ pastTest.questions.length }}) - {{ Date(pastTest.time) }}
+        <RouterLink :to="'/pasttest/' + index"
+          >{{ pastTest.category }} - ({{ pastTest.score }} /
+          {{ pastTest.questions.length }}) -
+          {{ Date(pastTest.time) }}</RouterLink
+        >
       </li>
     </ul>
   </div>

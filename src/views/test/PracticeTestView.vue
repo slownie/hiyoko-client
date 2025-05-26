@@ -13,6 +13,7 @@ async function addTestResult() {
   await userStore.addTestResult({
     questions: questions,
     category: propArray[1],
+    level: propArray[0],
     score: score.value,
     time: Date.now(),
   });
@@ -71,6 +72,7 @@ const checkCurrentQuestion = () => {
   }
 
   // Save the result in a property so it can be stored later
+  questions[currentQuestion.value]["selectedAnswer"] = selectedAnswer.value;
   questions[currentQuestion.value]["wasCorrect"] =
     selectedAnswer.value === getCurrentQuestion.value.rightAnswer;
 };

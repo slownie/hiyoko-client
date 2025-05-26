@@ -3,11 +3,13 @@ import HomeView from "../views/HomeView.vue";
 import GrammarListView from "@/views/grammar/GrammarListView.vue";
 import ReadingListView from "@/views/reading/ReadingListView.vue";
 import TestListView from "@/views/test/TestListView.vue";
-import AuthView from "@/views/AuthView.vue";
+import AuthView from "@/views/auth/AuthView.vue";
 import NotFoundView from "@/views/NotFoundView.vue";
 import ArticleView from "@/views/reading/ArticleView.vue";
 import GrammarPointView from "@/views/grammar/GrammarPointView.vue";
 import PracticeTestView from "@/views/test/PracticeTestView.vue";
+import PastTestView from "@/views/test/PastTestView.vue";
+import { useUserStore } from "@/stores/UserStore";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -63,6 +65,21 @@ const router = createRouter({
       name: "practicetest",
       component: PracticeTestView,
       props: true,
+    },
+
+    {
+      path: "/pasttest/:id",
+      name: "pasttest",
+      component: PastTestView,
+      props: true,
+
+      // Prevent user from accessing past tests if they are not signed in
+      beforeEnter: () => {
+        const userStore = useUserStore();
+        if (!userStore.userID) {
+          return "/testlist";
+        }
+      },
     },
 
     {
