@@ -86,6 +86,14 @@ const router = createRouter({
       path: "/auth",
       name: "auth",
       component: AuthView,
+
+      // Prevent user from accessing auth if they are signed in
+      beforeEnter: () => {
+        const userStore = useUserStore();
+        if (userStore.userID) {
+          return "/";
+        }
+      },
     },
 
     {
