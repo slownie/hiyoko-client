@@ -8,14 +8,14 @@ export const useUserStore = defineStore("userState", () => {
   const token = ref(null);
   const progress = ref([]);
   const readingListProgress = ref([]);
-  const testHistory = ref([]);
+  const testHistory = ref<any>([]);
 
   const error = ref(null);
   const loading = ref(false);
 
   // Load from localStorage if it exists
   if (localStorage.getItem("user") !== null) {
-    const localObject = JSON.parse(localStorage.getItem("user"));
+    const localObject = JSON.parse(localStorage.getItem("user") || "{}");
     userID.value = localObject.userID;
     progress.value = localObject.progress;
     readingListProgress.value = localObject.readingListProgress;
@@ -56,7 +56,7 @@ export const useUserStore = defineStore("userState", () => {
         testHistory: json.testResults,
       };
       localStorage.setItem("user", JSON.stringify(saveData));
-      router.go("/");
+      router.push("/");
     }
   }
 
@@ -91,7 +91,7 @@ export const useUserStore = defineStore("userState", () => {
         testHistory: json.testResults,
       };
       localStorage.setItem("user", JSON.stringify(saveData));
-      router.go("/");
+      router.push("/");
     }
   }
 
@@ -102,7 +102,7 @@ export const useUserStore = defineStore("userState", () => {
     readingListProgress.value = [];
     testHistory.value = [];
     localStorage.removeItem("user");
-    router.go("/");
+    router.push("/");
   }
 
   // Data Actions
@@ -129,7 +129,7 @@ export const useUserStore = defineStore("userState", () => {
       loading.value = false;
       testHistory.value.push(testResultObject);
 
-      const saveData = JSON.parse(localStorage.getItem("user"));
+      const saveData = JSON.parse(localStorage.getItem("user") || "{}");
 
       // This condition shouldn't run but someone can delete their save data if they're annoying
       if (saveData === undefined) {
