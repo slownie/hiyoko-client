@@ -19,7 +19,7 @@ const grammarPoint = computed(() => {
   <h2>接続</h2>
   <p v-html="grammarPoint?.conjugation"></p>
   <h2>例文</h2>
-  <p v-for="sentence in grammarPoint?.sentences" :key?="sentence">
+  <p v-for="sentence in grammarPoint?.sentences" :key="sentence">
     {{ sentence.jp }}
     <br />
     {{ sentence.eg }}

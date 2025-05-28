@@ -8,7 +8,7 @@ const pastTest = userStore.testHistory[parseInt(props.id)];
 
 <template>
   <h1>{{ pastTest.category }} - {{ pastTest.level }}</h1>
-  <h4>{{ Date(pastTest.time) }}</h4>
+  <h4>{{ new Date(pastTest.time) }}</h4>
   <hr />
   <section>
     <h3>Your Score: {{ pastTest.score }}/{{ pastTest.questions.length }}</h3>
