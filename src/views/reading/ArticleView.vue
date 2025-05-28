@@ -12,7 +12,7 @@ const currentArticle = computed(() => {
 
 <template>
   <main>
-    <h1>{{ currentArticle.title }}</h1>
+    <h1>{{ currentArticle?.title }}</h1>
     元記事:
     <a :href="currentArticle?.source" target="_blank">{{
       currentArticle?.source
@@ -22,10 +22,10 @@ const currentArticle = computed(() => {
       <li>{{ grammarPoint }}</li>
     </ul>
     <hr />
-    <p v-html="currentArticle.article_html"></p>
+    <p v-html="currentArticle?.article_html"></p>
     <hr />
     <h2>質問</h2>
-    <div v-for="question in currentArticle.questions">
+    <div v-for="question in currentArticle?.questions">
       {{ question }}
     </div>
     <button @click="showAnswer = !showAnswer">Show Answers</button>
