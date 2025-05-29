@@ -9,6 +9,7 @@ export const useUserStore = defineStore("userState", () => {
   const progress = ref([]);
   const readingListProgress = ref([]);
   const testHistory = ref<any>([]);
+  const lastLesson = ref("");
 
   const error = ref(null);
   const loading = ref(false);
@@ -144,6 +145,7 @@ export const useUserStore = defineStore("userState", () => {
     progress,
     readingListProgress,
     testHistory,
+    lastLesson,
     error,
     loading,
     signup,

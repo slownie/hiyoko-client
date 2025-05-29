@@ -9,6 +9,10 @@ import ArticleView from "@/views/reading/ArticleView.vue";
 import GrammarPointView from "@/views/grammar/GrammarPointView.vue";
 import PracticeTestView from "@/views/test/PracticeTestView.vue";
 import PastTestView from "@/views/test/PastTestView.vue";
+
+import LessonView from "@/views/lessons/LessonView.vue";
+import LessonContentView from "@/views/lessons/LessonContentView.vue";
+
 import { useUserStore } from "@/stores/UserStore";
 
 const router = createRouter({
@@ -27,6 +31,22 @@ const router = createRouter({
     //   // which is lazy-loaded when the route is visited.
     //   component: () => import('../views/AboutView.vue'),
     // },
+
+    {
+      path: "/lessons",
+      name: "lesson",
+      component: LessonView,
+
+      // Prevent user from accessing past tests if they are not signed in
+
+      children: [
+        {
+          path: "/lessons/:id",
+          component: LessonContentView,
+          props: true,
+        },
+      ],
+    },
 
     {
       path: "/grammarlist",

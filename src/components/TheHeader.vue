@@ -9,7 +9,8 @@ async function logout() {
 
 <template>
   <nav>
-    <RouterLink to="/">Home</RouterLink>
+    <RouterLink to="/">Hiyoko</RouterLink>
+    <RouterLink to="/lessons/0">Lessons</RouterLink>
     <RouterLink to="/grammarlist">Grammar List</RouterLink>
     <RouterLink to="/readinglist">Reading List</RouterLink>
     <RouterLink to="/testlist">Test List</RouterLink>
