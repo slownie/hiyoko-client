@@ -89,7 +89,7 @@ const userStore = useUserStore();
         <RouterLink :to="'/pasttest/' + index"
           >{{ pastTest.category }} - ({{ pastTest.score }} /
           {{ pastTest.questions.length }}) -
-          {{ Date(pastTest.time) }}</RouterLink
+          {{ new Date(pastTest.time) }}</RouterLink
         >
       </li>
     </ul>

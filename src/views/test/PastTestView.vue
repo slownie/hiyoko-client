@@ -3,7 +3,7 @@ import { useUserStore } from "@/stores/UserStore";
 
 const userStore = useUserStore();
 const props = defineProps({ id: String });
-const pastTest = userStore.testHistory[parseInt(props.id)];
+const pastTest = userStore.testHistory[parseInt(props.id!)];
 </script>
 
 <template>

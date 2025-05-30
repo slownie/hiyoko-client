@@ -8,6 +8,16 @@ const userStore = useUserStore();
 const props = defineProps({ id: String });
 const propArray: string[] = props.id?.split("-")!;
 
+interface Question {
+  questionString: string;
+  sentence: string;
+  answers: Array<string>;
+  rightAnswer: string;
+  explanation: string;
+  selectedAnswer: string;
+  wasCorrect: boolean;
+}
+
 async function addTestResult() {
   testResultSaved.value = true;
   await userStore.addTestResult({
@@ -19,31 +29,28 @@ async function addTestResult() {
   });
 }
 
-function shuffle(array: any[]) {
+function shuffle(array: []) {
   array.sort(() => Math.random() - 0.5);
 }
 
 // Question Setup
-const questions: any[] = [];
+const questions: Array<Question> = [];
+const test = testData[5 - parseInt(propArray[0].charAt(1))];
 
 // Check if this is a general test or a category test
 if (propArray[1] === "jlpt") {
-  //console.log(testData[5 - propArray[0].charAt(1)]);
-  //testData[5 - propArray[0].charAt(1)];
-  for (const category in testData[5 - Number(propArray[0].charAt(1))]) {
-    // Randomize the order of questions and select the first two
-    for (const [key, value] of Object.entries(
-      testData[5 - propArray[0].charAt(1)][category]
-    )) {
-      shuffle(value);
-      questions.push(value[0], value[1]);
+  // Combine all categories
+  for (const [key, value] of Object.entries(test)) {
+    const category: Object = test[key as keyof typeof test]!;
+    for (const [key2, value2] of Object.entries(category)) {
+      shuffle(value2);
+      questions.push(value2[0], value2[1]);
     }
   }
 } else {
-  for (const [key, value] of Object.entries(
-    testData[5 - propArray[0].charAt(1)][propArray[1]]
-  )) {
-    // Randomize the order of questions and select the first two
+  // Use the category provided
+  const category: Object = test[propArray[1] as keyof typeof test]!;
+  for (const [key, value] of Object.entries(category)) {
     shuffle(value);
     questions.push(value[0], value[1]);
   }
@@ -59,7 +66,7 @@ const submittedQuestion = ref(false);
 const testResultSaved = ref(false);
 
 // Get the current question via index
-const getCurrentQuestion = computed(() => {
+const getCurrentQuestion = computed<Question>(() => {
   let question = questions[currentQuestion.value];
   return question;
 });
@@ -72,8 +79,8 @@ const checkCurrentQuestion = () => {
   }
 
   // Save the result in a property so it can be stored later
-  questions[currentQuestion.value]["selectedAnswer"] = selectedAnswer.value;
-  questions[currentQuestion.value]["wasCorrect"] =
+  questions[currentQuestion.value].selectedAnswer = selectedAnswer.value;
+  questions[currentQuestion.value].wasCorrect =
     selectedAnswer.value === getCurrentQuestion.value.rightAnswer;
 };
 
