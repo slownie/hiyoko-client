@@ -10,16 +10,18 @@ const grammarPoint = computed(() => {
 </script>
 
 <template>
-  {{ name }}
-  <h1>{{ grammarPoint?.name }}</h1>
-  <h2>説明</h2>
-  <p v-html="grammarPoint?.explanation"></p>
-  <h2>接続</h2>
-  <p v-html="grammarPoint?.conjugation"></p>
-  <h2>例文</h2>
-  <p v-for="sentence in grammarPoint?.sentences">
-    {{ sentence.jp }}
-    <br />
-    {{ sentence.eg }}
-  </p>
+  <main>
+    {{ name }}
+    <h1>{{ grammarPoint?.name }}</h1>
+    <h2>説明</h2>
+    <p v-html="grammarPoint?.explanation"></p>
+    <h2>接続</h2>
+    <p v-html="grammarPoint?.conjugation"></p>
+    <h2>例文</h2>
+    <p v-for="sentence in grammarPoint?.sentences">
+      {{ sentence.jp }}
+      <br />
+      {{ sentence.eg }}
+    </p>
+  </main>
 </template>

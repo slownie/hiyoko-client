@@ -11,9 +11,9 @@ async function logout() {
   <nav>
     <RouterLink to="/">Hiyoko</RouterLink>
     <RouterLink to="/lessons/0">Lessons</RouterLink>
-    <RouterLink to="/grammarlist">Grammar List</RouterLink>
-    <RouterLink to="/readinglist">Reading List</RouterLink>
-    <RouterLink to="/testlist">Test List</RouterLink>
+    <RouterLink to="/grammarlist">Grammar</RouterLink>
+    <RouterLink to="/readinglist">Reading</RouterLink>
+    <RouterLink to="/testlist">Tests</RouterLink>
     <button v-if="userStore.userID" @click="logout">Log Out</button>
     <RouterLink to="/auth" v-else="userStore.userID">Sign In</RouterLink>
   </nav>

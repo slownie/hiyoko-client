@@ -17,16 +17,4 @@ import lessonData from "@/data/lessonData.json";
   </div>
 </template>
 
-<style scoped>
-.sidebar {
-  width: 200px;
-  background-color: #555;
-  height: 100%;
-  overflow: auto;
-  position: fixed;
-}
-
-.content {
-  margin-left: 200px;
-}
-</style>
+<style scoped></style>

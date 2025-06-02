@@ -12,19 +12,21 @@ const filteredArticles = computed(() => {
 </script>
 
 <template>
-  <h1>Reading List View</h1>
-  <input
-    type="text"
-    v-model="query"
-    placeholder="Search for an article."
-    @keyup=""
-  />
+  <main>
+    <h1>Reading List</h1>
+    <input
+      type="text"
+      v-model="query"
+      placeholder="Search for an article."
+      @keyup=""
+    />
 
-  <ul>
-    <li v-for="article in filteredArticles" :key="article.id">
-      <RouterLink :to="'readinglist/' + article.title">
-        {{ article.title }}
-      </RouterLink>
-    </li>
-  </ul>
+    <ul>
+      <li v-for="article in filteredArticles" :key="article.id">
+        <RouterLink :to="'readinglist/' + article.title">
+          {{ article.title }}
+        </RouterLink>
+      </li>
+    </ul>
+  </main>
 </template>

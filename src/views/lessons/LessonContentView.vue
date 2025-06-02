@@ -9,5 +9,7 @@ const currentArticle = computed(() => {
 </script>
 
 <template>
-  <span v-html="currentArticle?.lesson_html"></span>
+  <main>
+    <span v-html="currentArticle?.lesson_html"></span>
+  </main>
 </template>
