@@ -66,5 +66,44 @@
       "次第で",
       "次第だ"
     ]
+  },
+
+  {
+    "id": "2",
+    "name": "について",
+    "explanation": "Testing 1 2 3",
+    "conjugation": "名詞＋次第で<br/>名詞＋次第だ",
+    "sentences": [
+      {
+        "jpHTML": "Test JPHTML",
+        "jp": "Test JP",
+        "eg": "Test EG"
+      },
+      {
+        "jpHTML": "Test JPHTML",
+        "jp": "",
+        "eg": ""
+      },
+      {
+        "jpHTML": "Test JPHTML",
+        "jp": "",
+        "eg": ""
+      },
+      {
+        "jpHTML": "Test JPHTML",
+        "jp": "",
+        "eg": ""
+      }
+    ],
+    "tags": [
+      "shidaide",
+      "shidaida",
+      "shidai de",
+      "shidai da",
+      "しだいで",
+      "しだいだ",
+      "次第で",
+      "次第だ"
+    ]
   }
 ]

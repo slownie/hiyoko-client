@@ -32,6 +32,11 @@ body {
   background: #eee;
 }
 
+main {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
 h1 {
   font-size: var(--step-3);
 }
@@ -40,10 +45,19 @@ h2 {
   font-size: var(--step-1);
 }
 
+h3 {
+  font-size: var(--step-0);
+}
+
 p,
 li,
 a,
-input[type="text"] {
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="radio"],
+label,
+button {
   font-size: var(--step-0);
   line-height: 1.6;
 }
@@ -51,12 +65,29 @@ input[type="text"] {
 /* Mobile */
 @media only screen and (max-width: 500px) {
   main {
-    padding-left: 4px;
-    padding-right: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
   }
 
-  body {
-    font-size: 4vw;
+  h1 {
+    font-size: var(--step-2);
+  }
+
+  h2 {
+    font-size: var(--step-0);
+  }
+
+  p,
+  li,
+  a,
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="radio"],
+  label,
+  button {
+    font-size: var(--step--1);
+    line-height: 1.6;
   }
 }
 

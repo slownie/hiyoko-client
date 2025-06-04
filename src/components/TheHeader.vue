@@ -40,6 +40,10 @@ a:hover {
   color: red;
 }
 
+a.router-link-active {
+  color: red;
+}
+
 .container {
   max-width: 1100px;
   margin: 0 auto;

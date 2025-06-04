@@ -5,8 +5,8 @@ const userStore = useUserStore();
 
 <template>
   <main>
-    <h1>Test st</h1>
-    <h2>Full Tests (Vocabulary, Grammar, Reading)</h2>
+    <h1>Tests</h1>
+    <h2>JLPT (Vocabulary, Grammar, Reading)</h2>
     <div class="container">
       <RouterLink to="/testlist/n5-jlpt">N5</RouterLink>
       <RouterLink to="/testlist/n4-jlpt">N4</RouterLink>

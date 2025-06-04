@@ -133,6 +133,13 @@ const getNextQuestion = () => {
         >
           Next Question
         </button>
+        <p
+          v-if="selectedAnswer === getCurrentQuestion.rightAnswer"
+          class="correct-answer"
+        >
+          Correct!
+        </p>
+        <p v-else class="incorrect-answer">Incorrect.</p>
       </div>
     </section>
     <section v-else>
@@ -146,3 +153,13 @@ const getNextQuestion = () => {
     </section>
   </main>
 </template>
+
+<style scoped>
+.correct-answer {
+  color: green;
+}
+
+.incorrect-answer {
+  color: red;
+}
+</style>

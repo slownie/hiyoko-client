@@ -13,26 +13,56 @@ const currentArticle = computed(() => {
 <template>
   <main>
     <h1>{{ currentArticle?.title }}</h1>
-    元記事:
-    <a :href="currentArticle?.source" target="_blank">{{
-      currentArticle?.source
-    }}</a>
-    <h3>文法</h3>
-    <ul v-for="grammarPoint in currentArticle?.grammarPointsUsed">
-      <li>{{ grammarPoint }}</li>
-    </ul>
-    <hr />
+    <p>
+      元記事:
+      <a :href="currentArticle?.source" target="_blank">{{
+        currentArticle?.source
+      }}</a>
+    </p>
+
+    <div class="contents">
+      <h3 class="title">文法</h3>
+      <ul>
+        <li v-for="grammarPoint in currentArticle?.grammarPointsUsed">
+          <RouterLink :to="'/grammarlist/' + grammarPoint">{{
+            grammarPoint
+          }}</RouterLink>
+        </li>
+      </ul>
+    </div>
+
     <p v-html="currentArticle?.article_html"></p>
     <hr />
     <h2>質問</h2>
-    <div v-for="question in currentArticle?.questions">
+    <p v-for="question in currentArticle?.questions">
       {{ question }}
-    </div>
+    </p>
     <button @click="showAnswer = !showAnswer">Show Answers</button>
     <div v-if="showAnswer">
-      <div v-for="answer in currentArticle?.answers">
+      <p v-for="answer in currentArticle?.answers">
         {{ answer }}
-      </div>
+      </p>
     </div>
   </main>
 </template>
+
+<style scoped>
+ul {
+  margin-left: 24px;
+}
+
+p {
+  line-height: 2;
+}
+
+.contents {
+  border: 1px solid #8e8e8e;
+  margin-bottom: 1rem;
+}
+
+.title {
+  color: rgb(240, 240, 240);
+  background-color: #274d7b;
+  padding: 15px;
+}
+</style>
