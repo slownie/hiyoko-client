@@ -14,6 +14,7 @@ import LessonView from "@/views/lessons/LessonView.vue";
 import LessonContentView from "@/views/lessons/LessonContentView.vue";
 
 import { useUserStore } from "@/stores/UserStore";
+import TestView from "@/views/TestView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -120,6 +121,13 @@ const router = createRouter({
       path: "/:pathMatch(.*)*",
       name: "NotFound",
       component: NotFoundView,
+    },
+
+    // Remove this in the final release
+    {
+      path: "/pagetest",
+      name: "PageTest",
+      component: TestView,
     },
   ],
 });

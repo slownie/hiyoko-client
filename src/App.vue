@@ -40,7 +40,10 @@ h2 {
   font-size: var(--step-1);
 }
 
-p {
+p,
+li,
+a,
+input[type="text"] {
   font-size: var(--step-0);
   line-height: 1.6;
 }
