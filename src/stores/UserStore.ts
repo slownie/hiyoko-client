@@ -27,14 +27,17 @@ export const useUserStore = defineStore("userState", () => {
   async function signup(email: String, password: String) {
     error.value = null;
     loading.value = true;
-    const res = await fetch("http://localhost:4000/api/users/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify({ email: email, password: password }),
-    });
+    const res = await fetch(
+      "https://hiyoko-server.vercel.app/api/users/signup",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({ email: email, password: password }),
+      }
+    );
     const json = await res.json();
     if (!res.ok) {
       error.value = json.error;
@@ -64,11 +67,14 @@ export const useUserStore = defineStore("userState", () => {
   async function login(email: String, password: String) {
     error.value = null;
     loading.value = true;
-    const res = await fetch("http://localhost:4000/api/users/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: email, password: password }),
-    });
+    const res = await fetch(
+      "https://hiyoko-server.vercel.app/api/users/login",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email, password: password }),
+      }
+    );
     const json = await res.json();
 
     if (!res.ok) {
@@ -111,14 +117,17 @@ export const useUserStore = defineStore("userState", () => {
     const sendUserID = userID.value;
     error.value = null;
     loading.value = true;
-    const res = await fetch("http://localhost:4000/api/users/addTestResult", {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        userID: sendUserID,
-        testResultObject: testResultObject,
-      }),
-    });
+    const res = await fetch(
+      "https://hiyoko-server.vercel.app/api/users/addTestResult",
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userID: sendUserID,
+          testResultObject: testResultObject,
+        }),
+      }
+    );
     const json = await res.json();
     if (!res.ok) {
       error.value = json.error;
