@@ -43,7 +43,7 @@ function swap() {
         required
       />
 
-      <p>
+      <p class="error">
         {{ userStore.error }}
       </p>
 

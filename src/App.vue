@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
 import TheHeader from "./components/TheHeader.vue";
+import TheLoadingComponent from "./components/TheLoadingComponent.vue";
+import { useUserStore } from "./stores/UserStore";
+const userStore = useUserStore();
 </script>
 
 <template>
+  <TheLoadingComponent v-show="userStore.loading" />
   <TheHeader />
   <RouterView />
 </template>

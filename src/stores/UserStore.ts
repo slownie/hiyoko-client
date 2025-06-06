@@ -45,6 +45,7 @@ export const useUserStore = defineStore("userState", () => {
     }
 
     if (res.ok) {
+      console.log(json);
       userID.value = json.userID;
       token.value = json.token;
       progress.value = json.grammarProgress;
