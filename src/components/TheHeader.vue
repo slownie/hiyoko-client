@@ -37,11 +37,11 @@ a {
 }
 
 a:hover {
-  color: red;
+  text-decoration: underline;
 }
 
 a.router-link-active {
-  color: red;
+  font-weight: bold;
 }
 
 .container {

@@ -10,6 +10,7 @@
   text-align: center;
   position: fixed;
   padding: 0;
+  padding-top: 40vh;
   margin: 0;
 
   top: 0;
