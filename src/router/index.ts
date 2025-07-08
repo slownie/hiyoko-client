@@ -13,6 +13,7 @@ import PastTestView from "@/views/test/PastTestView.vue";
 import LessonContentView from "@/views/lessons/LessonContentView.vue";
 
 import { useUserStore } from "@/stores/UserStore";
+import LessonOverlayView from "@/views/lessons/LessonOverlayView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,11 +27,12 @@ const router = createRouter({
     {
       path: "/lessons",
       name: "lesson",
-
+      component: LessonOverlayView,
       // Prevent user from accessing past tests if they are not signed in
       children: [
         {
           path: ":id",
+          name: "lessoncontent",
           component: LessonContentView,
           props: true,
         },

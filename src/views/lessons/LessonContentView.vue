@@ -10,19 +10,6 @@ const currentArticle = computed(() => {
 
 <template>
   <main>
-    <div class="sidebar">
-    <ul>
-      <li v-for="lesson in lessonData">
-        <RouterLink :to="'/lessons/' + lesson.id">{{
-          lesson.title
-        }}</RouterLink>
-      </li>
-    </ul>
-  </div>
-  <div class="content">
-    <RouterView />
-  </div>
-
     <span v-html="currentArticle?.lesson_html"></span>
   </main>
 </template>
