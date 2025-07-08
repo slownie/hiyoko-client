@@ -5,6 +5,7 @@ const userStore = useUserStore();
 
 <template>
   <main>
+    <router-view></router-view>
     <h1>Tests</h1>
     <h2>JLPT (Vocabulary, Grammar, Reading)</h2>
     <div class="container">

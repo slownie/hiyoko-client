@@ -10,11 +10,9 @@ import GrammarPointView from "@/views/grammar/GrammarPointView.vue";
 import PracticeTestView from "@/views/test/PracticeTestView.vue";
 import PastTestView from "@/views/test/PastTestView.vue";
 
-import LessonView from "@/views/lessons/LessonView.vue";
 import LessonContentView from "@/views/lessons/LessonContentView.vue";
 
 import { useUserStore } from "@/stores/UserStore";
-import TestView from "@/views/TestView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,25 +22,15 @@ const router = createRouter({
       name: "home",
       component: HomeView,
     },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue'),
-    // },
 
     {
       path: "/lessons",
       name: "lesson",
-      component: LessonView,
 
       // Prevent user from accessing past tests if they are not signed in
-
       children: [
         {
-          path: "/lessons/:id",
+          path: ":id",
           component: LessonContentView,
           props: true,
         },
@@ -52,55 +40,74 @@ const router = createRouter({
     {
       path: "/grammarlist",
       name: "grammarList",
-      component: GrammarListView,
-    },
+      
+      children: [
+        {
+          path: '',
+          name: 'grammarListView',
+          component: GrammarListView,
+        },
 
-    {
-      path: "/grammarlist/:id",
-      name: "grammarPoint",
-      component: GrammarPointView,
-      props: true,
+        {
+          path: ":id",
+          name: "grammarPoint",
+          component: GrammarPointView,
+          props: true,
+        }
+      ]
     },
 
     {
       path: "/readinglist",
-      name: "readingList",
-      component: ReadingListView,
-    },
+      name: "readingListBase",
+      children: [
+        {
+          path: '',
+          name: "readingListView",
+          component: ReadingListView,
+        },
 
-    {
-      path: "/readinglist/:id",
-      name: "article",
-      component: ArticleView,
-      props: true,
+        {
+          path: ':id',
+          name: "article",
+          component: ArticleView,
+          props: true
+        }
+      ]
     },
 
     {
       path: "/testlist",
       name: "testList",
-      component: TestListView,
-    },
+      children: [
+        {
+          path: '',
+          name: 'testListView',
+          component: TestListView
+        },
 
-    {
-      path: "/testlist/:id",
-      name: "practicetest",
-      component: PracticeTestView,
-      props: true,
-    },
+        {
+          path: ':id',
+          name: 'practicetest',
+          component: PracticeTestView,
+          props: true,
+        },
 
-    {
-      path: "/pasttest/:id",
-      name: "pasttest",
-      component: PastTestView,
-      props: true,
+        {
+          path: "/pasttest/:id",
+          name: "pasttest",
+          component: PastTestView,
+          props: true,
 
-      // Prevent user from accessing past tests if they are not signed in
-      beforeEnter: () => {
-        const userStore = useUserStore();
-        if (!userStore.userID) {
-          return "/testlist";
-        }
-      },
+          // Prevent user from accessing past tests if they are not signed in
+          beforeEnter: () => {
+            const userStore = useUserStore();
+            if (!userStore.userID) {
+              return "/testlist";
+            }
+          },
+        },
+      ]
     },
 
     {
@@ -122,14 +129,9 @@ const router = createRouter({
       name: "NotFound",
       component: NotFoundView,
     },
+  ]
 
     // Remove this in the final release
-    {
-      path: "/pagetest",
-      name: "PageTest",
-      component: TestView,
-    },
-  ],
 });
 
 export default router;
