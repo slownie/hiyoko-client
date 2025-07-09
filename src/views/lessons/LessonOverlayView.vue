@@ -20,7 +20,7 @@ function toggleSidebar() {
             </div>
             <ul class="nav-list">
                 <li v-for="lesson in lessonData" :key="lesson.id">
-                    <RouterLink :to="'/lessons/' + lesson.id">{{lesson.title}}</RouterLink>
+                    <RouterLink :to="'/lessons/' + lesson.id" @click="toggleSidebar">{{lesson.title}}</RouterLink>
                 </li>
             </ul>
         </nav>
@@ -96,7 +96,7 @@ function toggleSidebar() {
     }
 
     .content {
-        margin-left: 15%;
+        margin-left: 10%;
     }
 
 </style>
