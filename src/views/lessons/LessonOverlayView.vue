@@ -1,50 +1,100 @@
 <script setup>
 import lessonData from "@/data/lessonData.json";
+
+function toggleSidebar() {
+    document.querySelector(".sidebar").classList.toggle("active");
+}
+
 </script>
 
 <template>
-    <div class="sidebar">
-        <ul>
-            <li v-for="lesson in lessonData" :key="lesson.id">
-                <RouterLink :to="'/lessons/' + lesson.id">{{lesson.title}}</RouterLink>
-            </li>
-        </ul>
-    </div>
-    <div class="content">
-        <RouterView></RouterView>
-    </div>
+    <main>
+        <nav class="sidebar">
+            <div class="toggle-btn" @click="toggleSidebar">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-list">
+                <li v-for="lesson in lessonData" :key="lesson.id">
+                    <RouterLink :to="'/lessons/' + lesson.id">{{lesson.title}}</RouterLink>
+                </li>
+            </ul>
+        </nav>
+        <div class="content">
+            <RouterView></RouterView>
+        </div>
+    </main>
+    
 </template>
 
 <style scoped>
     .sidebar {
-        background-color: #f6f6f7;
-        margin: 0;
-        padding: 0;
         position: fixed;
-        height: 100%;
-        padding-left: 8px;
+        top: 80px;
+        left: -300px;
+        width: 300px;
+        height: 100svh;
+        background-color: #f6f6f7;
+        border-right: 1px solid #ddd;
+        transition: all 300ms ease-in-out;
     }
 
-    @media only screen and (max-width: 500px) {
-        
+    .sidebar .toggle-btn {
+        position: absolute;
+        top: -5px;
+        right: -50px;
+        width: 50px;
+        height: 50px;
+        background-color: #f6f6f7;
+        border: 1px solid #ddd;
+        border-left: none;
+        cursor: pointer;
     }
 
-    .sidebar a {
-        color: #3c3c49;
-        text-decoration: none;
+    .sidebar .toggle-btn span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60%;
+        height: 2px;
+        background: #555;
+        transition: all 300ms ease-in-out;
+    }
+    
+    .sidebar .toggle-btn span:nth-child(1) {
+        top: 30%;
     }
 
-    .sidebar a:hover {
-        color: #18794e;
+    .sidebar .toggle-btn span:nth-child(3) {
+        top: 70%;
     }
 
-    .sidebar a.router-link-active {
-        color: #18794e;
-        font-weight: bold;
+    .sidebar.active {
+        left: 0px;
+    }
+
+    .sidebar .nav-list {
+        transition: all 300ms ease-in-out;
+    }
+
+    .sidebar.active .toggle-btn span:nth-child(1) {
+        top:50%;
+        transform: translate(-50%,-50%) rotate(45deg);
+    }
+
+    .sidebar.active .toggle-btn span:nth-child(3) {
+        top:50%;
+        transform: translate(-50%,-50%) rotate(-45deg);
+    }
+
+    .sidebar.active .toggle-btn span:nth-child(2) {
+        display: none;
     }
 
     .content {
-        padding-left: 250px;
+        margin-left: 15%;
     }
 
 </style>
