@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { computed } from "vue";
 import lessonData from "@/data/lessonData.json";
 const props = defineProps({ id: String });

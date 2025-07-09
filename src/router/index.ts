@@ -11,9 +11,11 @@ import PracticeTestView from "@/views/test/PracticeTestView.vue";
 import PastTestView from "@/views/test/PastTestView.vue";
 
 import LessonContentView from "@/views/lessons/LessonContentView.vue";
+import LessonOverlayView from "@/views/lessons/LessonOverlayView.vue";
 
 import { useUserStore } from "@/stores/UserStore";
-import LessonOverlayView from "@/views/lessons/LessonOverlayView.vue";
+
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

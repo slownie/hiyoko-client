@@ -1,15 +1,18 @@
-<script setup>
+<script setup lang="ts">
 import lessonData from "@/data/lessonData.json";
+import { ref } from "vue";
+
+const sidebarActive = ref(true);
 
 function toggleSidebar() {
-    document.querySelector(".sidebar").classList.toggle("active");
+    sidebarActive.value = !sidebarActive.value;
 }
 
 </script>
 
 <template>
     <main>
-        <nav class="sidebar">
+        <nav class="sidebar" :class="{active: sidebarActive}">
             <div class="toggle-btn" @click="toggleSidebar">
                 <span></span>
                 <span></span>
@@ -25,7 +28,6 @@ function toggleSidebar() {
             <RouterView></RouterView>
         </div>
     </main>
-    
 </template>
 
 <style scoped>
