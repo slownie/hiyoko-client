@@ -18,10 +18,17 @@ const grammarPoint = computed(() => {
     <h2>接続</h2>
     <p v-html="grammarPoint?.conjugation"></p>
     <h2>例文</h2>
-    <p v-for="sentence in grammarPoint?.sentences">
-      {{ sentence.jp }}
-      <br />
-      {{ sentence.eg }}
-    </p>
+
+    <li v-for="sentence in grammarPoint?.sentences" :key="sentence.eg">
+      <p v-html="sentence.jpHTML"></p>
+      <p>{{ sentence.eg }}</p>
+    </li>
   </main>
 </template>
+
+<style>
+  .highlight {
+    color: red;
+  }
+
+</style>

@@ -42,4 +42,8 @@ const filteredPoints = computed(() => {
 input {
   min-width: 300px;
 }
+
+ul {
+  list-style-type: none;
+}
 </style>

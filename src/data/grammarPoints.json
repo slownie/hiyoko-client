@@ -70,40 +70,59 @@
 
   {
     "id": "2",
-    "name": "について",
-    "explanation": "Testing 1 2 3",
-    "conjugation": "名詞＋次第で<br/>名詞＋次第だ",
+    "name": "～上がる",
+    "explanation": "A verb that is used at the end of stem verbs to emphasize the completion or increase of an action. It is commonly used when an effect or product is produced as a result of the verb it is attached to.",
+    "conjugation": "動詞「連用形」＋<span class='highlight'>あがる</span>",
     "sentences": [
       {
-        "jpHTML": "Test JPHTML",
-        "jp": "Test JP",
-        "eg": "Test EG"
+        "jpHTML": "レポートは書き<span class='highlight'>上げた？</span>",
+        "jp": "レポートは書き上げた？",
+        "eg": "Did you finish writing the paper?"
       },
       {
-        "jpHTML": "Test JPHTML",
-        "jp": "",
-        "eg": ""
+        "jpHTML": "古いコンピューターは立ち<span class='highlight'>上がる</span>のに十分かかる。",
+        "jp": "古いコンピューターは立ち上がるのに十分かかる。",
+        "eg": "It takes an old computer 10 minutes to finish booting."
       },
       {
-        "jpHTML": "Test JPHTML",
-        "jp": "",
-        "eg": ""
+        "jpHTML": "空は雨の後で腫れ<span class='highlight'>上がった</span>。",
+        "jp": "空は雨の後で腫れ上がった。",
+        "eg": "The weather cleared completely after the rain."
       },
       {
-        "jpHTML": "Test JPHTML",
-        "jp": "",
-        "eg": ""
+        "jpHTML": "商品の価格が急に値<span class='highlight'>上がり</span>しました。",
+        "jp": "商品の価格が急に値上がりしました。",
+        "eg": "The price of commodities suddenly rose."
       }
     ],
     "tags": [
-      "shidaide",
-      "shidaida",
-      "shidai de",
-      "shidai da",
-      "しだいで",
-      "しだいだ",
-      "次第で",
-      "次第だ"
+    ]
+  },
+
+  {
+    "id": "3",
+    "name": "～がかり",
+    "explanation": "A suffix used with nouns to emphasize the time or effort spent on an action or task. ",
+    "conjugation": "名詞＋<span class='highlight'>がかり</span>",
+    "sentences": [
+      {
+        "jpHTML": "この作業は五人<span class='highlight'>がかり</span>でやっと終わりました。",
+        "eg": "This task was finally finished with the help of five people."
+      },
+      {
+        "jpHTML": "この研究は一年<span class='highlight'>がかり</span>の努力の結果です。",
+        "eg": "This research is the result of a year’s effort."
+      },
+      {
+        "jpHTML": "このロボットの修理は数日<span class='highlight'>がかり</span>で完了しました。",
+        "eg": "The repair of this robot took several days."
+      },
+      {
+        "jpHTML": "この農作物の収穫は二ヶ月<span class='highlight'>がかり</span>で行いました。",
+        "eg": "The harvest of these crops took two months."
+      }
+    ],
+    "tags": [
     ]
   }
 ]

@@ -74,7 +74,7 @@ button {
   }
 
   h1 {
-    font-size: var(--step-2);
+    font-size: var(--step-1);
   }
 
   h2 {
@@ -98,12 +98,16 @@ button {
 /* Mobile */
 @media only screen and (max-width: 1000px) {
   main {
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  
+  p, a {
+    font-size: var(--step-0);
   }
 
-  body {
-    font-size: 1.15em;
+  h1 {
+    font-size: var(--step-3);
   }
 }
 </style>

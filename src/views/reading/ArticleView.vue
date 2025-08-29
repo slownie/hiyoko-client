@@ -49,10 +49,16 @@ const currentArticle = computed(() => {
 <style scoped>
 ul {
   margin-left: 24px;
+  list-style-type: circle;
+}
+
+li {
+  margin-top: 14px;
+  margin-bottom: 14px;
 }
 
 p {
-  line-height: 2;
+  line-height: 3;
 }
 
 .contents {
@@ -63,6 +69,7 @@ p {
 .title {
   color: rgb(240, 240, 240);
   background-color: #274d7b;
-  padding: 15px;
+  padding: 12px;
+  text-align: center;
 }
 </style>

@@ -12,7 +12,7 @@ function toggleSidebar() {
 
 <template>
     <main>
-        <nav class="sidebar" :class="{active: sidebarActive}">
+        <aside class="sidebar" :class="{active: sidebarActive}">
             <div class="toggle-btn" @click="toggleSidebar">
                 <span></span>
                 <span></span>
@@ -23,7 +23,7 @@ function toggleSidebar() {
                     <RouterLink :to="'/lessons/' + lesson.id" @click="toggleSidebar">{{lesson.title}}</RouterLink>
                 </li>
             </ul>
-        </nav>
+        </aside>
         <div class="content">
             <RouterView></RouterView>
         </div>
