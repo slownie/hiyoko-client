@@ -56,6 +56,7 @@ h3 {
 p,
 li,
 a,
+span,
 input[type="text"],
 input[type="email"],
 input[type="password"],
